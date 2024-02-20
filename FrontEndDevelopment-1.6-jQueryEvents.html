@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>
+            jQuery Events
+        </title>
+        <script src="jquery-3.7.1.min.js"></script>
+    </head>
+    <body>
+        <div>
+            <h3>When you click on the following button, it will dissapear.</h3>
+            <button id="bid">Click Me!</button>
+        </div>
+        <hr>
+        <div>
+            <h3>When you double click on the following button, it will dissapear.</h3>
+            <button id="dbid">Double Click Me!</button>
+        </div>
+        <hr>
+        <div>
+            <h3>When you hover on the following paragraph, it will change the color.</h3>
+            <p id="pid1">Hover Me!</p>
+        </div>
+        <hr>
+        <div>
+            <h3>When your mouse enters following paragraph it will change it's color to blue and when mouse leaves, color will be changed to cyan.</h3>
+            <p id="pid2">Mouse Entered or Leaved</p>
+        </div>
+        <hr>
+        <div>
+            <h3>When your mouse enters following paragraph it will change it's color to red and when mouse leaves, color will be changed to blue.</h3>
+            <p id="pid3">Mouse Entered or Leaved in one</p>
+        </div>
+        <script>
+            $(document).ready(function(){
+                $("#bid").click(function(){
+                    $(this).hide();
+             });
+
+             $("#dbid").dblclick(function(){
+                    $(this).hide();
+             }); 
+
+             $("#pid1").hover(function(){
+                    $(this).css("background-color", "pink");
+             }); 
+
+             $("#pid2").mouseenter(function(){
+                    $(this).css("background-color", "blue");
+             }); 
+
+             $("#pid2").mouseleave(function(){
+                    $(this).css("background-color", "cyan");
+             }); 
+
+             $("#pid3").on({
+                mouseenter : function(){
+                    $(this).css("background-color", "red");
+                },
+                mouseleave : function(){
+                    $(this).css("background-color", "blue");
+                }
+            });
+            });
+        </script>
+    </body>
+</html>

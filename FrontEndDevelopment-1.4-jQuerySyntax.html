@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <title>
+            jQuery Syntax
+        </title>
+        <script src="jquery-3.7.1.min.js"></script>
+    </head>
+    <body>
+        <p id="pid">This is a sample paragraph!</p>
+        <script>
+            $(document).ready(function(){
+                $("#pid").click(function(){
+                    alert("clicked the paragraph!!");
+            });
+            });
+
+            // $("#pid").click(function(){
+            //     alert("clicked the paragraph!!");
+            // });
+            
+            // document.getElementById("pid").onclick = function(){
+            //     alert("clicked the paragraph!!");
+            // }
+        </script>
+
+    </body>
+</html>
