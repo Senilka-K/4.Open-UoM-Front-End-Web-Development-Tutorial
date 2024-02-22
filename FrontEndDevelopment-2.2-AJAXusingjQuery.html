@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta name="viewpoint" content="width=device width, initial-scale=1">
+        <title>
+            AJAX using jQuery
+        </title>
+        <script src="jquery-3.7.1.min.js"></script>
+        <link rel="stylesheet" type="text/css" href="FrontEndDevelopment-2.2-AJAXusingjQuery-styles.css">
+    </head>
+    <body>
+        <h1>Animal world</h1>
+        <h2>Dogs</h2>
+
+        <div><p>
+            Dog is one of the cutest pet in the animal world. Dogs make wonderful pets for various reasons. They are known for their loyalty, companionship, and diverse personalities. As social animals, dogs thrive on human interaction and form strong bonds with their owners. They come in a wide range of breeds, each with its own characteristics, sizes, and energy levels, catering to different lifestyles and preferences.<br><br>
+            Beyond being loving companions, dogs often serve as protectors, alerting their owners to potential dangers. They also contribute to physical and mental well-being, as their presence can reduce stress and provide a sense of purpose. Dogs require care, including regular exercise, proper nutrition, and veterinary attention, fostering responsibility and routine for their owners.<br><br>
+            Whether small or large, energetic or calm, there's a dog breed to suit various living situations and individual preferences. The joy and unconditional love they bring to a household make them one of the most popular and cherished pets worldwide.<br>
+        </p></div>
+
+        <img src="Image-01.jpg" alt="Dog image">
+
+        <div><p>Having a dog as a pet can be a rewarding and fulfilling experience for many people. Dogs are known for their loyalty, companionship, and diverse range of breeds that cater to different lifestyles and preferences.</p></div>
+
+        <button id="bid">More Information</button>
+        
+        <div id="div1"></div>
+
+        <script>
+            $(document).ready(function(){
+                $("button").click(function(){
+                    $.ajax("FrontEndDevelopment-2.2-AJAXusingjQuery-MoreInfo.html",{
+                        success: function(result){
+                            $("#div1").append(result);
+                            $("#bid").hide();
+                        }
+                    });
+                });
+            });
+        </script>
+
+    </body>
+</html>
