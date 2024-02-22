@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta name="viewpoint" content="width=device width, initial-scale=1">
+        <title>
+            AJAX using jQuery
+        </title>
+        <script src="jquery-3.7.1.min.js"></script>
+    </head>
+    <body>
+        <h1>Animal world</h1>
+        <div id="div1"></div>
+
+        <script>
+            $(document).ready(function(){
+                $("#div1").load("FrontEndDevelopment-2.2-AJAXusingjQuery-1-demo_test.html", function(response, statusTxt, Xhr){
+                    if(statusTxt == "success")
+                        alert("Content loaded successfuly");
+                    if(statusTxt == "error")
+                        alert("Error: " +Xhr.status + Xhr.statusText);                        
+
+                });
+            });
+        </script>
+
+    </body>
+</html>
