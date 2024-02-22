@@ -1,5 +1,5 @@
 $(function(){
-    $("form[name='registration']").validate({
+    $("form[name='Registration']").validate({
         rules: {
             name: "required",
             email: {
@@ -40,4 +40,4 @@ $(function(){
             form.submit();
         }
     });
-});
+})
