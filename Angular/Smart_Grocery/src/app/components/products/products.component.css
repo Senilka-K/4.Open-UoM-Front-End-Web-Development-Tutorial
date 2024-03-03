@@ -17,11 +17,20 @@ table tbody tr td{
 }
 
 
-table tbody tr:hover td, table tbody tr:hover th {
+/* table tbody tr:hover td, table tbody tr:hover th {
+    background-color: #c8f8d1;
+} */
+
+table tbody tr.active td{
     background-color: #c8daf8;
 }
 
 .icon{
     color: rgb(99, 98, 98);
     margin: 5px;
+}
+
+.btn-xs{
+    margin: 1px;
+    border-radius: 2px;
 }

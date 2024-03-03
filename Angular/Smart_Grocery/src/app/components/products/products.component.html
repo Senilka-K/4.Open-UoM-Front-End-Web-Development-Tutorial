@@ -18,7 +18,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr *ngFor="let product of products">
+                    <tr *ngFor="let product of products let i = index" (click)="selectProduct(i)" [ngClass]="rowIndex == i ? 'active' : ''">
                         <th scope="row">{{product.productId}}</th>
                         <td>{{product.productName}}</td>
                         <td>{{product.productDescription}}</td>
@@ -29,10 +29,10 @@
                             <p *ngIf="product.quantity <= 50">Lower Inventory Level</p>
                             <p *ngIf="product.quantity > 50">Sufficient Inventory Level</p>
                         </td>
-                        <td>
-                            <i class="fa fa-eye icon"></i>
-                            &nbsp;
-                            <i class="fa fa-pencil-square-o icon"></i>
+                        <td colspan="3">
+                            <button type="button" [disabled]="rowIndex != i && !isRowSelected" class="btn-xs icon"><i class="fa fa-eye icon"></i></button>
+                            <button type="button" [disabled]="rowIndex != i && !isRowSelected" class="btn-xs icon"><i class="fa fa-pencil-square-o icon"></i></button>
+                            
                         </td>
                        </tr>
                 </tbody>

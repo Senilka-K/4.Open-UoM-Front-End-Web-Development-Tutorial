@@ -14,8 +14,10 @@ import {CommonModule} from '@angular/common';
 export class ProductsComponent implements OnInit{
   constructor() {}
   ngOnInit(): void {
-    
-  }
+  
+}
+  public isRowSelected: boolean = false;
+  public rowIndex: number = 0;
   
   public products = [{
     'productId' : "001",
@@ -49,7 +51,11 @@ export class ProductsComponent implements OnInit{
     'quantity' : 10,
     'productDescription' : "Imported mysoor dhal from India"
   },
-]
-
+];
+ 
+public selectProduct(selectedRow: number) {
+  this.isRowSelected = true;
+  this.rowIndex = selectedRow;
+}
 }
 
