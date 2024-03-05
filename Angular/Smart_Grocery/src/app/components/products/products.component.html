@@ -21,7 +21,7 @@
                 </thead>
                 <tbody>
                     <tr *ngFor="let product of products let i = index" (click)="selectProduct(i)" [ngClass]="rowIndex == i ? 'active' : ''">
-                        <th scope="row">{{product.productId}}</th>
+                        <!-- <th scope="row">{{product.productId}}</th>
                         <td>{{product.productName}}</td>
                         <td>{{product.productDescription}}</td>
                         <td>{{product.createdDate | date | uppercase}}</td>
@@ -35,7 +35,7 @@
                             <button type="button" [disabled]="rowIndex != i && !isRowSelected" class="btn-xs icon"><i class="fa fa-eye icon"></i></button>
                             <button type="button" [disabled]="rowIndex != i && !isRowSelected" class="btn-xs icon"><i class="fa fa-pencil-square-o icon"></i></button>
                             
-                        </td>
+                        </td> -->
                        </tr>
                 </tbody>
             </table>
