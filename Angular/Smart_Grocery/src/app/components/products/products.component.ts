@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { read } from 'node:fs';
 import {CommonModule} from '@angular/common';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AddProductComponent } from '../add-product/add-product.component';
+import { EditProductComponent } from '../edit-product/edit-product.component';
 import { ProductService } from '../../service/product.service';
 import { Product } from '../../model/product.model';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
@@ -13,6 +15,9 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
     CommonModule,
     AddProductComponent,
     HttpClientModule,
+    FormsModule,
+    ReactiveFormsModule,
+    EditProductComponent,
   ],
   templateUrl: './products.component.html',
   styleUrl: './products.component.css'
@@ -21,22 +26,27 @@ export class ProductsComponent implements OnInit{
   public rowIndex!: number;
   showAddProduct!: boolean;
   isLoading : boolean = false;
+  showEditProduct! : boolean;
+  selectedProduct! : Product;
 
+  public products: Product[] = []
   constructor(private productService : ProductService) {}
 
   public isRowSelected!: boolean;
   
   ngOnInit(): void{
-    this.getProduct();
+    this.getProducts();
   }
-  public products :Product[]=[];
- 
-public selectProduct(selectedRow: number) {
-  this.isRowSelected = true;
+
+public selectProduct(selectedRow: any, product: Product) {
   this.rowIndex = selectedRow;
+  this.selectedProduct = product;
 }
 
 showAddProducts(){
+  if(this.showEditProduct) {
+    this.showEditProduct = false;
+  }
   this.showAddProduct = true;
 }
 
@@ -44,7 +54,7 @@ hideAddProducts(){
     this.showAddProduct = false;
   }
 
-getProduct(){
+getProducts(){
   this.isLoading =true;
   this.productService.getProducts().subscribe((res)=>{
     this.products =res.data;
@@ -52,7 +62,25 @@ getProduct(){
   })
 }
 refresh(){
-  this.getProduct();
+  this.getProducts();
+}
+
+updateProductList(){
+  this.getProducts();
+}
+
+OpenEditProductView(){
+  if(this.showAddProduct){
+    this.showAddProduct = false;
+  }
+  this.showEditProduct = true;
+}
+
+closeEditView(){
+  this.showEditProduct = false;
+}
+closeAddView(){
+  this.showAddProduct = false;
 }
 }
 

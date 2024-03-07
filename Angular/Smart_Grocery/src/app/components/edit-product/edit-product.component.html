@@ -1,0 +1,38 @@
+<div class="edit-product-secction mt-3">
+    <div class="box-head">
+        <h1 class="pr-name">Edit product</h1>
+        <button type="button" class="btn btn-light" (click)="cancel()">X</button>
+    </div>
+    <form class="row g-3" #form="ngform" (ngSubmit)="onSubmit()">
+        <div class="form-group">
+            <label class="form-label">Product Name</label>
+            <input type="text" class="form-control" name="productName" #productName="ngmodel" [(ngmodel)]="product.productName">
+        </div>
+
+        <div class="form-group">
+            <label class="form-label">Product Description</label>
+            <input type="text" class="form-control" name="productDescription" #productDescription="ngmodel" [(ngmodel)]="product.description">
+        </div>
+
+        <div class="row-mt-3">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="form-label">Quantity</label>
+                    <input type="text" class="form-control" name="quantity" #quantity="ngmodel" [(ngmodel)]="product.quantity">
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-6">
+            <div class="form-group">
+                <label class="form-label">Unit Price</label>
+                <input type="text" class="form-control" name="unitPrice" #unitPrice="ngmodel" [(ngmodel)]="product.unitPrice">
+            </div>
+        </div>
+
+        <div class="col-12 text-end mt-5">
+            <button type="button" class="btn btn btn-outline-secondary me-2">cancel</button>
+            <button type="submit" class="btn btn-outline-primary" [disabled]="form.invalid">Update Product<i *ngIf="isDataUploading" class="fa fa-spinner fa-pulse fa-fw"></i></button>
+        </div>
+    </form>
+</div>

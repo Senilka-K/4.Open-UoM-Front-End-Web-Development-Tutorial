@@ -1,10 +1,11 @@
-import { Component, OnInit } from '@angular/core';
-import { ReactiveFormsModule } from '@angular/forms';
+import { Component, OnInit, EventEmitter, Output } from '@angular/core';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {FormBuilder, Validators} from '@angular/forms';
 import {CommonModule} from '@angular/common';
 import { ProductService } from '../../service/product.service';
 import { Product } from '../../model/product.model';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { EditProductComponent } from '../edit-product/edit-product.component';
 
 @Component({
   selector: 'app-add-product',
@@ -12,7 +13,9 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
   imports: [
     CommonModule,
     ReactiveFormsModule,
+    FormsModule,
     HttpClientModule,
+    EditProductComponent,
   ],
   templateUrl: './add-product.component.html',
   styleUrl: './add-product.component.css'
@@ -33,7 +36,8 @@ export class AddProductComponent implements OnInit{
   });
 
   isDataUploading = false;
-
+  @Output() ProductAddEvent : EventEmitter<void> = new EventEmitter<void>();
+  @Output() closeAddEvent : EventEmitter<void> = new EventEmitter<void>();
   constructor(private fb: FormBuilder,
     private productService :ProductService) {}
  
@@ -47,9 +51,14 @@ export class AddProductComponent implements OnInit{
     const values = this.productFrom.value as Product;
     values.createdDate = new Date().toDateString();
     this.productService.addProduct(values as Product).subscribe((res)=>{
+      debugger;
+      this.isDataUploading = false;
+      this.ProductAddEvent.emit();
       this.productFrom.reset();
-    })
+    });
   }
-
+cancel(){
+  this.closeAddEvent.emit();
+}
 }
  

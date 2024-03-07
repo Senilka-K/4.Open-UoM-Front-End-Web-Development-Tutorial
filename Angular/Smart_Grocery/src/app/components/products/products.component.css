@@ -22,7 +22,7 @@ table tbody tr td{
 } */
 
 table tbody tr.active td{
-    background-color: #c8daf8;
+    background-color: #c8daf8 !important; 
 }
 
 .icon{
