@@ -40,8 +40,10 @@
                             <p *ngIf="product.quantity <= 50">Insufficient Inventory Level</p>
                             <p *ngIf="product.quantity > 50">Sufficient Inventory Level</p>
                         </td> -->
-                        <td colspan="3">
-                            <button type="button" [disabled]="rowIndex != i" class="btn-xs icon"><i class="fa fa-eye icon"></i></button>
+                        <td>
+                            <a routerLink="['/product-detail-view', product.id]">
+                                <button type="button" [disabled]="rowIndex != i" class="btn-xs icon"><i class="fa fa-eye icon"></i></button>
+                            </a>
                             <button type="button" [disabled]="rowIndex != i" class="btn-xs icon" (click)="OpenEditProductView()"><i class="fa fa-pencil-square-o icon"></i></button>
                         </td>
                        </tr>

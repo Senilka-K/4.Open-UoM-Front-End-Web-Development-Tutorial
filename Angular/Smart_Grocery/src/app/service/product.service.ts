@@ -30,4 +30,7 @@ private baseUrl = 'https://host1.open.uom.lk:8000/';
   updateProduct(product: Product): Observable<any> {
     return this.http.put<any>(this.baseUrl + 'api/products', product);
   }
+  getProductById(id: any){
+    return this.http.get<any>(`${this.baseUrl} api/products/$(id)`);
+  }
 }
